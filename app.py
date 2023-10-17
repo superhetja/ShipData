@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, render_template
 import csv
-from itertools import groupby
 
 app = Flask(__name__)
 
