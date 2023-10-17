@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>IMO</th>
+        <th>Name</th>
+        <th>Time</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Main Engine Consumption</th>
+        <th>Distance Over Ground</th>
+        <th>Speed</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable({
+        ajax: '/api/data',
+        columns: [
+            {data: 'imo'},
+            {data: 'name'},
+            {data: 'time', render: DataTable.render.datetime("DD-MM-YYYY")},
+            {data: 'lat', orderable: false},
+            {data: 'lon', orderable: false},
+            {data: 'mainEngineConsumption', orderable: false},
+            {data: 'DistanceOverGround', orderable: false},
+            {data: 'Speed', orderable: false}
+        ],
+      });
+    });
+  </script>
+{% endblock %}

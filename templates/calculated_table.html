@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th>IMO</th>
+        <th>Name</th>
+        <th>Sum Main Engine Consumption</th>
+        <th>Average Main Engine Consumption</th>
+        <th>Sum Distance Over Ground</th>
+        <th>Average Distance Over Ground</th>
+        <th>Sum Speed</th>
+        <th>Average Speed</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable({
+        ajax: '/api/aggregated-data',
+        columns: [
+            {data: 'imo'},
+            {data: 'name'},
+            {data: 'sum_mainEngineConsumption'},
+            {data: 'avg_mainEngineConsumption'},
+            {data: 'sum_DistanceOverGround'},
+            {data: 'avg_DistanceOverGround'},
+            {data: 'sum_Speed'},
+            {data: 'avg_Speed'}
+        ]
+      });
+    });
+  </script>
+{% endblock %}
